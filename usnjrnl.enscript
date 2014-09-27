@@ -7,13 +7,13 @@ class MainClass {
         ItemCacheClass itemCache(c);
         LocalFileClass outputFile();
         if ((FileClass inputFile = itemCache.GetRawFile(item)) &&
-            outputFile.Open(c.TemporaryFolder() + "\\" + item.Name(), FileClass::WRITE)) {
+          outputFile.Open(c.TemporaryFolder() + "\\" + item.Name(), FileClass::WRITE)) {
           outputFile.WriteBuffer(inputFile);
           String pythonPath = "C:\\Python27\\python.exe";
           String pyScriptPath = "C:\\scripts\\usnjrnl.py";
           String py_arg_in = outputFile.Name();
-		  String py_arg_out = c.ExportFolder() + "\\" + "usnjrnl";
-		  Console.WriteLine("Processing $UsnJrnl.$J");
+          String py_arg_out = c.ExportFolder() + "\\" + "usnjrnl";
+          Console.WriteLine("Processing $UsnJrnl.$J");
           ExecuteClass exe();
           exe.SetFolder(pythonPath.GetFilePath());
           exe.SetApplication(pythonPath);
@@ -21,8 +21,6 @@ class MainClass {
           if (exe.Start(LocalMachine, 1000)) {
 			Console.WriteLine(String::Format("CSV File Written out to {0}.csv", py_arg_out));
           }
-		
-		
         }
       }
       Console.WriteLine("Processing Complete!\n{0}", SystemClass::LastError());
