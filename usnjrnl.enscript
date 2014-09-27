@@ -19,7 +19,7 @@ class MainClass {
           exe.SetApplication(pythonPath);
           exe.SetCommandLine(String::Format("\"{0}\" -c -f \"{1}\" -o \"{2}\"", pyScriptPath, py_arg_in, py_arg_out));
           if (exe.Start(LocalMachine, 1000)) {
-          Console.WriteLine(String::Format("CSV File Written out to {0}.csv", py_arg_out));
+            Console.WriteLine(String::Format("CSV File Written out to {0}.csv", py_arg_out));
           }
         }
       }
