@@ -7,8 +7,8 @@ class MainClass {
         ItemCacheClass itemCache(c);
         LocalFileClass outputFile();
         if ((FileClass inputFile = itemCache.GetRawFile(item)) &&
-          Console.WriteLine("Copying file to tmp location please wait");
           outputFile.Open(c.TemporaryFolder() + "\\" + item.Name(), FileClass::WRITE)) {
+          Console.WriteLine("Copying file to tmp location please wait");
           outputFile.WriteBuffer(inputFile);
           String pythonPath = "C:\\Python27\\python.exe";
           String pyScriptPath = "C:\\scripts\\usnjrnl.py";
