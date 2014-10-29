@@ -75,7 +75,7 @@ class MainClass {
               PyArgs += "-o " + '"' + OutFile + '"' + " ";
               
               exe.SetCommandLine(String::Format("\"{0}\" {1}", PyScriptPath, PyArgs));
-              if (exe.Start(LocalMachine, 1000)) {
+              if (exe.Start(LocalMachine, 9999)) {
                 Console.WriteLine(exe.Output());
               }
             Console.WriteLine(String::Format("CSV Written out to: {0}", OutFile));
