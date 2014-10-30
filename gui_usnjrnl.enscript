@@ -4,15 +4,17 @@ class MainDialogClass : DialogClass {
  
   CheckBoxClass CSV;
   CheckBoxClass TSV;
+  CheckBoxClass ChkOpenFolder;
+  
 
 
    
   MainDialogClass (MainClass m) :
     super(null, m.ScriptName),
     M = m,
-    CSV(this, "CSV Output", SAME, NEXT, DEFAULT, DEFAULT, 0, m.DoCsv),
-    TSV(this, "TSV Output", SAME, NEXT, DEFAULT, DEFAULT, 0, m.DoTsv)
-
+    CSV(this, "CSV Output", SAME, NEXT, DEFAULT, DEFAULT, 1, m.DoCsv),
+    TSV(this, "TSV Output", SAME, NEXT, DEFAULT, DEFAULT, 0, m.DoTsv),
+	ChkOpenFolder (this, "Open Destination Folder", START, NEXT, DEFAULT, DEFAULT, 0, m.OpenFolder)
   {
   }
  
@@ -32,8 +34,9 @@ class MainClass {
          TypeTerm,
          TempDir;
   bool DoCsv,
-       DoTsv;
-        
+       DoTsv,
+	   OpenFolder;
+	           
   MainClass () :
     ScriptName("UsnJrnl Parser"),
     PythonPath("C:\\Python27\\python.exe"),
@@ -75,10 +78,12 @@ class MainClass {
               PyArgs += "-o " + '"' + OutFile + '"' + " ";
               
               exe.SetCommandLine(String::Format("\"{0}\" {1}", PyScriptPath, PyArgs));
-              if (exe.Start(LocalMachine, 9999)) {
+              if (exe.Start(LocalMachine, 1000)) {
                 Console.WriteLine(exe.Output());
               }
             Console.WriteLine(String::Format("CSV Written out to: {0}", OutFile));
+			if (OpenFolder)
+			SystemClass::BrowsePath(c.ExportFolder());
             }
           }
         
