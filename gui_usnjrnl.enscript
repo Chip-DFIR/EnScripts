@@ -1,3 +1,6 @@
+// Copyright 2014 @ChipRAFP
+// See the file 'LICENSE' for copying permission.
+
 class MainClass;
 class MainDialogClass : DialogClass {
   MainClass M;
